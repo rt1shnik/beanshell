@@ -35,7 +35,7 @@
 options {
     JAVA_UNICODE_ESCAPE=true;
     STATIC=false;
-    JDK_VERSION="1.8";
+    JDK_VERSION="1.7";
 
     MULTI=true;
     NODE_DEFAULT_VOID=true;
@@ -778,7 +778,8 @@ int AssignmentOperator() :
 void ConditionalExpression() :
 { Token t; }
 {
-  RelationalExpression() (  "?" ConditionalExpression() ":" ConditionalExpression() #TernaryExpression(3)
+  RelationalExpression() (
+  "?" ConditionalExpression() ":" ConditionalExpression() #TernaryExpression(3)
   |
   ( (t="||" | t="@or" | t="&&" | t="@and") RelationalExpression()
         { jjtThis.kind = t.kind; } #BinaryExpression(2) )*

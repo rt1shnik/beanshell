@@ -342,7 +342,7 @@ public class BshArray {
         }
 
         int[] dims = dimensions(fromValue);
-        int length = dims[0];
+        final int length = dims[0];
         if (length == 0)
             return Array.newInstance(toType, dims);
         // if we have an Object[] try and find a more specific type
