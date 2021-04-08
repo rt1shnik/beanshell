@@ -68,9 +68,16 @@ public final class Reflect {
     private static final Map<String,String> ACCESSOR_NAMES = new WeakHashMap<>();
     private static final Pattern DEFAULT_PACKAGE
         = Pattern.compile("[^\\.]+|bsh\\..*");
-    private static final Pattern PACKAGE_ACCESS
-        = Pattern.compile("(?:"+Security.getProperty("package.access")
-            .replace(',', '|')+").*");
+    private static final Pattern PACKAGE_ACCESS;
+
+    static {
+        String packageAssess = Security.getProperty("package.access");
+        if (packageAssess == null) {
+            packageAssess = "";
+        }
+        PACKAGE_ACCESS = Pattern.compile("(?:" + packageAssess
+                .replace(',', '|') + ").*");
+    }
 
 
     /**
