@@ -20,3 +20,5 @@ BeanShell.ipr
 BeanShell.iws
 *gradle*
 *.ser
+
+.idea/
